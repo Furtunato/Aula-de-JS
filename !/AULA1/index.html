@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometry Dash</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #87CEEB, #1E90FF);
+        }
+        canvas {
+            display: block;
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas"></canvas>
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const player = {
+            x: 50,
+            y: canvas.height - 150,
+            width: 50,
+            height: 50,
+            color: '#f00',
+            dy: 0,
+            gravity: 1,
+            jumpPower: 15,
+            isJumping: false
+        };
+
+        const ground = {
+            x: 0,
+            y: canvas.height - 100,
+            width: canvas.width,
+            height: 100,
+            color: '#654321'
+        };
+
+        const obstacles = [];
+        const obstacleWidth = 50;
+        const obstacleHeight = 50;
+        const obstacleColor = '#0f0';
+        let obstacleSpeed = 50;
+
+        function drawPlayer() {
+            ctx.fillStyle = player.color;
+            ctx.fillRect(player.x, player.y, player.width, player.height);
+        }
+
+        function drawGround() {
+            ctx.fillStyle = ground.color;
+            ctx.fillRect(ground.x, ground.y, ground.width, ground.height);
+        }
+
+        function drawObstacles() {
+            ctx.fillStyle = obstacleColor;
+            obstacles.forEach(obstacle => {
+                ctx.fillRect(obstacle.x, obstacle.y, obstacleWidth, obstacleHeight);
+            });
+        }
+
+        function updatePlayer() {
+            if (player.isJumping) {
+                player.dy -= player.gravity;
+                player.y -= player.dy;
+                if (player.y >= ground.y - player.height) {
+                    player.y = ground.y - player.height;
+                    player.isJumping = false;
+                    player.dy = 0;
+                }
+            }
+        }
+
+        function updateObstacles() {
+            obstacles.forEach(obstacle => {
+                obstacle.x -= obstacleSpeed;
+            });
+
+            if (obstacles.length === 0 || obstacles[obstacles.length - 1].x < canvas.width - 300) {
+                obstacles.push({
+                    x: canvas.width,
+                    y: ground.y - obstacleHeight
+                });
+            }
+
+            if (obstacles[0].x + obstacleWidth < 0) {
+                obstacles.shift();
+            }
+        }
+
+        function detectCollision() {
+            obstacles.forEach(obstacle => {
+                if (player.x < obstacle.x + obstacleWidth &&
+                    player.x + player.width > obstacle.x &&
+                    player.y < obstacle.y + obstacleHeight &&
+                    player.y + player.height > obstacle.y) {
+                    alert('Game Over');
+                    document.location.reload();
+                }
+            });
+        }
+
+        function gameLoop() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawGround();
+            drawPlayer();
+            drawObstacles();
+            updatePlayer();
+            updateObstacles();
+            detectCollision();
+            requestAnimationFrame(gameLoop);
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.code === 'Space' && !player.isJumping) {
+                player.isJumping = true;
+                player.dy = player.jumpPower;
+            }
+        });
+
+        gameLoop();
+    </script>
+</body>
+</html>
+<script>
+    let score = 0;
+    let highScore = 0;
+
+    function updateScore() {
+        document.getElementById('score').innerText = `Score: ${score}`;
+        document.getElementById('highScore').innerText = `High Score: ${highScore}`;
+    }
+
+    function resetGame() {
+        score = 0;
+        obstacles.length = 0;
+        player.x = 50;
+        player.y = canvas.height - 150;
+        player.isJumping = false;
+        player.dy = 0;
+        obstacleSpeed = 10;
+    }
+
+    function detectCollision() {
+        obstacles.forEach(obstacle => {
+            if (player.x < obstacle.x + obstacleWidth &&
+                player.x + player.width > obstacle.x &&
+                player.y < obstacle.y + obstacleHeight &&
+                player.y + player.height > obstacle.y) {
+                alert('Game Over');
+                resetGame();
+            }
+        });
+    }
+
+    function updateObstacles() {
+        obstacles.forEach(obstacle => {
+            obstacle.x -= obstacleSpeed;
+            if (obstacle.x + obstacleWidth < player.x && !obstacle.passed) {
+                score++;
+                if (score > highScore) {
+                    highScore = score;
+                }
+                obstacle.passed = true;
+            }
+        });
+
+        if (obstacles.length === 0 || obstacles[obstacles.length - 1].x < canvas.width - 300) {
+            obstacles.push({
+                x: canvas.width,
+                y: ground.y - obstacleHeight,
+                passed: false
+            });
+        }
+
+        if (obstacles[0].x + obstacleWidth < 0) {
+            obstacles.shift();
+        }
+    }
+
+    function gameLoop() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawGround();
+        drawPlayer();
+        drawObstacles();
+        updatePlayer();
+        updateObstacles();
+        detectCollision();
+        updateScore();
+        requestAnimationFrame(gameLoop);
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.code === 'Space' && !player.isJumping) {
+            player.isJumping = true;
+            player.dy = player.jumpPower;
+        }
+    });
+
+    gameLoop();
+</script>
+<div id="score" style="position: absolute; top: 10px; left: 10px; color: white; font-size: 24px;">Score: 0</div>
+<div id="highScore" style="position: absolute; top: 40px; left: 10px; color: white; font-size: 24px;">High Score: 0</div>
+<style>
+    body {
+        background: linear-gradient(to bottom, #87CEEB, #1E90FF);
+    }
+    canvas {
+        background: linear-gradient(to bottom, #000, #555);
+    }
+</style>

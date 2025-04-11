@@ -1,0 +1,80 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f3f1e7;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: #006241;
+    font-size: 2.5em;
+    margin-top: 20px;
+}
+
+p {
+    color: #2e2e2e;
+    font-size: 1.2em;
+}
+
+.cafeteria-modelo {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.pedido button {
+    background-color: #00704A;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.pedido button:hover {
+    background-color: #005a38;
+}
+
+#carrinho {
+    list-style: none;
+    padding: 0;
+}
+
+#carrinho li {
+    background-color: #d4e9e2;
+    margin: 5px auto;
+    padding: 10px;
+    border-radius: 5px;
+    width: 50%;
+    text-align: center;
+}
+
+#total {
+    font-weight: bold;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #00704A;
+    text-decoration: underline;
+}
+
+#finalizar-compra {
+    background-color: #d62b1f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+#finalizar-compra:hover {
+    background-color: red;
+}

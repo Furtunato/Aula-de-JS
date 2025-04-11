@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotlibrary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #191414; /* Cor de fundo geral */
+            margin: 0;
+            padding: 0;
+            color: white; /* Texto branco para contraste */
+        }
+        header {
+            background-color: #1ED760; /* Cor de fundo do título */
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+        }
+        .search-bar {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .search-bar input {
+            padding: 8px;
+            width: 300px;
+            font-size: 16px;
+        }
+        .genres {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .genre-btn {
+            background-color: #1ED760;
+            color: white;
+            padding: 10px 15px;
+            margin: 5px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .genre-btn:hover {
+            background-color: #16c14d;
+        }
+        .book-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .book-card {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .book-card:hover {
+            transform: scale(1.05);
+        }
+        .book-card h3 {
+            margin: 0 0 10px;
+            color: #333; /* Cor do título do livro */
+        }
+        .book-card p {
+            margin: 5px 0;
+            color: #555;
+        }
+        /* Estilo para o modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Ajustado para mais escuro */
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            width: 60%;
+            max-width: 600px;
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .close-btn {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+        .close-btn:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Spotlibrary</h1>
+    </header>
+
+    <div class="container">
+        <div class="search-bar">
+            <input type="text" id="search" placeholder="Buscar livros..." onkeyup="searchBooks()">
+        </div>
+
+        <div class="genres">
+            <button class="genre-btn" onclick="filterBooks('Romance')">Romance</button>
+            <button class="genre-btn" onclick="filterBooks('Drama')">Drama</button>
+            <button class="genre-btn" onclick="filterBooks('Aventura')">Aventura</button>
+            <button class="genre-btn" onclick="filterBooks('Mistério')">Mistério</button>
+            <button class="genre-btn" onclick="filterBooks('Clássico')">Clássico</button>
+            <button class="genre-btn" onclick="filterBooks('Todos')">Todos</button>
+        </div>
+
+        <div class="book-list" id="book-list">
+            <!-- Livros serão carregados aqui via JavaScript -->
+        </div>
+    </div>
+
+    <!-- Modal para exibir detalhes do livro -->
+    <div id="bookModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle"></h2>
+                <button class="close-btn" onclick="closeModal()">Fechar</button>
+            </div>
+            <p><strong>Autor:</strong> <span id="modalAuthor"></span></p>
+            <p><strong>Ano de publicação:</strong> <span id="modalYear"></span></p>
+            <p id="modalDescription"></p>
+        </div>
+    </div>
+
+    <script>
+        // Dados dos livros com gênero
+        const books = [
+            { title: "Dom Casmurro", author: "Machado de Assis", year: 1899, description: "Dom Casmurro é um dos maiores romances de Machado de Assis.", genre: "Romance" },
+            { title: "O Primo Basílio", author: "José de Alencar", year: 1878, description: "O Primo Basílio é uma obra que aborda o adultério.", genre: "Drama" },
+            { title: "A Moreninha", author: "Joaquim Manuel de Macedo", year: 1844, description: "A Moreninha é um romance romântico sobre amor jovem.", genre: "Romance" },
+            { title: "Senhora", author: "José de Alencar", year: 1875, description: "Senhora é um romance psicológico sobre amor e vingança.", genre: "Drama" },
+            { title: "Memórias Póstumas de Brás Cubas", author: "Machado de Assis", year: 1881, description: "Uma reflexão sobre a vida e a morte.", genre: "Clássico" },
+            { title: "O Cortiço", author: "Aluísio Azevedo", year: 1890, description: "O Cortiço é uma obra que examina a vida nos cortiços.", genre: "Drama" },
+            { title: "Iracema", author: "José de Alencar", year: 1865, description: "Iracema é um romance indianista sobre amor proibido.", genre: "Romance" },
+            { title: "O Guarani", author: "José de Alencar", year: 1857, description: "O Guarani é uma mistura de aventura e romance.", genre: "Aventura" },
+            { title: "O Alienista", author: "Machado de Assis", year: 1882, description: "O Alienista trata da loucura e da razão.", genre: "Mistério" },
+            { title: "O Ateneu", author: "Raul Pompeia", year: 1888, description: "O Ateneu é uma crítica ao sistema educacional.", genre: "Clássico" },
+            { title: "Iracema", author: "José de Alencar", year: 1865, description: "Iracema é uma história de amor entre um português e uma índia.", genre: "Romance" },
+            { title: "O Primo Basílio", author: "José de Alencar", year: 1878, description: "O Primo Basílio examina a hipocrisia da sociedade.", genre: "Drama" },
+            { title: "A Moreninha", author: "Joaquim Manuel de Macedo", year: 1844, description: "A Moreninha é uma história de amor e juventude.", genre: "Romance" },
+            { title: "O Cortiço", author: "Aluísio Azevedo", year: 1890, description: "O Cortiço retrata a vida nas favelas do Rio de Janeiro.", genre: "Drama" },
+            { title: "A Escrava Isaura", author: "Bernardo Guimarães", year: 1875, description: "A Escrava Isaura é sobre a luta pela liberdade.", genre: "Drama" },
+            { title: "O Ateneu", author: "Raul Pompeia", year: 1888, description: "O Ateneu examina a sociedade e a vida em um colégio.", genre: "Clássico" },
+            { title: "Iracema", author: "José de Alencar", year: 1865, description: "Iracema é uma história de amor entre um português e uma índia.", genre: "Romance" },
+            { title: "O Alienista", author: "Machado de Assis", year: 1882, description: "O Alienista trata de temas como loucura e a moral.", genre: "Mistério" },
+        ];
+
+        // Remover livros duplicados baseados no título
+        const uniqueBooks = [...new Map(books.map(book => [book.title, book])).values()];
+
+        // Função para exibir os livros
+        function displayBooks(bookList) {
+            const bookListContainer = document.getElementById("book-list");
+            bookListContainer.innerHTML = ""; // Limpar lista atual
+
+            bookList.forEach(book => {
+                const bookCard = document.createElement("div");
+                bookCard.classList.add("book-card");
+                bookCard.onclick = function() { showBookDetails(book); };
+
+                bookCard.innerHTML = `
+                    <h3>${book.title}</h3>
+                    <p><strong>Autor:</strong> ${book.author}</p>
+                    <p><strong>Ano:</strong> ${book.year}</p>
+                `;
+                bookListContainer.appendChild(bookCard);
+            });
+        }
+
+        // Função de pesquisa
+        function searchBooks() {
+            const query = document.getElementById("search").value.toLowerCase();
+            const filteredBooks = uniqueBooks.filter(book => book.title.toLowerCase().includes(query));
+            displayBooks(filteredBooks);
+        }
+
+        // Função para filtrar livros por gênero
+        function filterBooks(genre) {
+            if (genre === 'Todos') {
+                displayBooks(uniqueBooks);
+            } else {
+                const filteredBooks = uniqueBooks.filter(book => book.genre === genre);
+                displayBooks(filteredBooks);
+            }
+        }
+
+        // Função para exibir detalhes do livro
+        function showBookDetails(book) {
+            document.getElementById("modalTitle").textContent = book.title;
+            document.getElementById("modalAuthor").textContent = book.author;
+            document.getElementById("modalYear").textContent = book.year;
+            document.getElementById("modalDescription").textContent = book.description;
+
+            const modal = document.getElementById("bookModal");
+            modal.style.display = "flex";
+        }
+
+        // Função para fechar o modal
+        function closeModal() {
+            const modal = document.getElementById("bookModal");
+            modal.style.display = "none";
+        }
+
+        // Inicializar com todos os livros
+        displayBooks(uniqueBooks);
+    </script>
+</body>
+</html>

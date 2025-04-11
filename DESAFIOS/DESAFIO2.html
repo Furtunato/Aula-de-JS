@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estoques</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<body>
+    <h1>Verificação de estoque</h1>
+    <label for="produto">Escolha seu produto:</label>
+    <select id="produto" name="produto" required>
+        <option value="cafe">Café</option>
+        <option value="leite">Leite</option>
+        <option value="acucar">Açúcar</option>
+        <option value="arroz">Arroz</option>
+        <option value="feijao">Feijão</option>
+    </select>
+    
+    <label for="quantidade">Quantidade:</label>
+    <input type="number" id="quantidade" name="quantidade" required>
+    <button id="verificar">Verificar</button>
+    <p id="resultado"></p>
+    <script src="desafio2.js"></script>
+</body>
+</html>

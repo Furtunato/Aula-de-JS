@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafeteria</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- LOGO -->
+    <link rel="icon" href="img/10000486.jpg" type="image/x-icon">
+</head>
+<body style="align-items: center;">
+    <center>
+        <h1 style='margin-top: 0%; text-align: center; font-family: ap;'>Cafeteria Pão de Mel</h1>
+        <p style="text-align: center; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">Escolha sua bebida:</p>
+        <div class="cafeteria-modelo">
+            <div class="cafeteria"></div>
+            <div class="pedido">
+                <h1></h1>
+                <button class="pedido-botao" data-name="Café" data-price="5">Café - R$5</button>
+                <button class="pedido-botao" data-name="Café com leite" data-price="6">Café com leite - R$6</button>
+                <button class="pedido-botao" data-name="Capuccino" data-price="8">Capuccino - R$8</button>
+                <button class="pedido-botao" data-name="Chocolate quente" data-price="7.50">Chocolate quente - R$7,50</button>
+                <button class="pedido-botao" data-name="Chá" data-price="4">Chá - R$4</button>
+            </div>
+        </div>
+        <h2>Carrinho</h2>
+        <ul id="carrinho"></ul>
+        <p>Total: R$<span id="total">0</span></p>
+        <button id="finalizar-compra">Finalizar Compra</button>
+    </center>
+    <script src="DESAFIO.js"></script>
+</body>
+</html>

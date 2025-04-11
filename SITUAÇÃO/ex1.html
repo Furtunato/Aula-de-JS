@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semáforo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Simulação de Semáforo</h1>
+    <h2>Digite um número de 1 a 3 para ver a cor do semáforo</h2>
+    <input type="text" id="numero" placeholder="Digite 1, 2 ou 3">
+    <button onclick="alterarSinal()">Alterar</button>
+    <p id="mensagem"></p>
+    <script>function alterarSinal() {
+        let numero = document.getElementById('numero').value;
+        document.getElementById('mensagem').innerHTML = '';
+        if (numero == 1) {
+            document.getElementById('mensagem').innerHTML = 'Vermelho'; 
+        } else if (numero == 2) {
+            document.getElementById('mensagem').innerHTML = 'Laranja'; 
+        } else if (numero == 3) {
+            document.getElementById('mensagem').innerHTML = 'Verde'; 
+        } else {
+            document.getElementById('mensagem').innerHTML = 'Numeros do 1 ao 3!';
+        }
+    }
+    </script>
+
+</body>
+</html>

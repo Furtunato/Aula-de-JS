@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre dispositivos</title>
+</head>
+<body>
+    <h1>Dispositivos Antigos</h1>
+
+    Qual dispositivo você quer saber sobre: <input type="text" id="dispositivos" min="1" max="12">
+    <button onclick="exibirDispositivos()">Sobre</button>
+    <p id="resultado"></p>
+
+    <script>
+        function exibirDispositivos() {
+            let antigo = document.getElementById("dispositivos").value;
+            let resultado;
+
+            switch (antigo.toLowerCase()) {
+                case "cassete":
+                    resultado = "Muito popular nos anos 70 e 80, a fita cassete era portátil e permitia criar mixtapes. Sua qualidade de som era inferior, e elas se desgastavam com o tempo. Mesmo assim, têm um charme nostálgico e um apelo para quem gosta do formato físico.";
+                    break;
+                case "dvd":
+                    resultado = "O DVD substituiu o VHS nos anos 90, oferecendo melhor qualidade de imagem e som. Permitindo recursos extras como menus interativos e legendas, mas foi superado por Blu-ray e streaming. Ainda é usado por colecionadores.";
+                    break;
+                case "cd":
+                    resultado = "Lançado nos anos 80, o CD revolucionou a música com sua qualidade digital superior às fitas cassete. Oferecia som claro e sem ruídos, mas foi superado pelos arquivos digitais e streaming. Ainda é popular entre colecionadores.";
+                    break;
+                default:
+                    resultado = "Dispositivo não encontrado.";
+                    break;
+            }
+            document.getElementById("resultado").innerHTML = `Sobre o dispositivo ${antigo}: ${resultado}`;
+        }
+    </script>
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre dispositivos</title>
+</head>
+<body>
+    <h1>Dispoitovos Antigos</h1>
+
+    Qual dispositivo voce quer saber sobre: <input type="text" id="dispositivos" min="1" max="12">
+    <button onclick="exibirDispositivos()">Sobre</button>
+    <p id="resultado"></p>
+    <script>
+        function exibirDispositivos() {
+            let antigo = (document.getElementById("dispositivos").value);
+            let resultado;
+
+            switch (antigo.toLowerCase()) {
+                case "Cassete":
+                    resultado = "Muito popular nos anos 70 e 80, a fita cassete era portátil e permitia criar mixtapes. Sua qualidade de som era inferior, e elas se desgastavam com o tempo. Mesmo assim, têm um charme nostálgico e um apelo para quem gosta do formato físico.";
+                    break;
+                case "DVD":
+                    resultado = "O DVD substituiu o VHS nos anos 90, oferecendo melhor qualidade de imagem e som. Permitindo recursos extras como menus interativos e legendas, mas foi superado por Blu-ray e streaming. Ainda é usado por colecionadores.";
+                    break;
+                case "CD":
+                    resultado = "Lançado nos anos 80, o CD revolucionou a música com sua qualidade digital superior às fitas cassete. Oferecia som claro e sem ruídos, mas foi superado pelos arquivos digitais e streaming. Ainda é popular entre colecionadores.";
+                    break;
+                default:
+                    resultado = "Signo bbnão encontrado"; 
+                    break;
+            }
+            document.getElementById("resultado").innerHTML = `Sobre o dispositivo ${antigo} é: ${resultado}`;
+        }
+    </script>
+</body>
+</html> -->

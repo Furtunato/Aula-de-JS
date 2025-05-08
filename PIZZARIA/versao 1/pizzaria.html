@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzaria Davi Brito</title>
+    <link rel="stylesheet" href="pizzaria.css">
+</head> 
+<body>
+    <div class="container">
+        <h1> PIZZARIA BRITO - CALMANDO A CALABRESA</h1>
+        <div class="menu">
+            <button onclick="mostrarSecao('cadastro')">
+                <i class="fas fa-book-medical icon"></i>Cadastrar Pizza
+            </button>
+            <button onclick="mostrarSecao('consulta')">
+                <i class="fas fa-search icon"></i>Consultar pizza
+            </button>
+            <button onclick="mostrarSecao('alterar')">
+                <i class="fas fa-edit icon"></i>Alterar pizza
+            </button>
+            <button onclick="mostrarSecao('venda')">
+                <i class="fas fa-shopping-cart icon"></i>Vendas de pizzas
+            </button>
+            <button onclick="gerarRelatorioVendas()">
+                <i class="fa-solid fa-flag"></i> Relatório de Vendas
+            </button>
+        </div>
+    </div>
+</body>
+</html>

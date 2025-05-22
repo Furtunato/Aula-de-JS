@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <!-- Importa a fonte Poppins do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="login.css">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+    <title>Biblioteca</title>
+</head>
+<body>
+    <div id="login" class="container">
+        <h1>Bem-vindo à nossa Biblioteca</h1>
+        <h2>Faça login para continuar</h2>
+        <div class="form-group">
+            <label for="usuario">Usuário:</label>
+            <input type="text" id="usuario" placeholder="Digite seu usuario">
+        </div>
+        <div class="form-group">
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" placeholder="Digite sua senha:">
+        </div>
+        <button onclick="validarLogin()">Entrar</button>
+        <p id="mensagem" class="mensagem hidden"></p>
+    </div>
+    <footer>
+        <img src="https://anprotec.org.br/site/wp-content/uploads/2018/09/logo-senai-cor-1.jpg" alt="Logo senai" class="Logo senai">
+    </footer>
+    <script src="biblioteca4.js"></script>
+</body>
+</html>

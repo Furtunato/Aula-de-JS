@@ -1,44 +1,231 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 body {
-    font-family: 'Poppins', Verdana, Geneva, Tahoma, sans-serif;
-    margin: 20px;   
-    background-color: #f9f9f9;
-    color: #333;
-
+  font-family: 'Poppins', sans-serif;
+  background: #fff;
+  color: #333;
+  line-height: 1.6;
 }
 
-.container {
-    max-width: 800px;
-    margin: auto;
-    background: white;
-    padding: 20px;
-    border-radius: 13px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 1);
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
-h1, h2 {
-    text-align: center;
-    color: #444;
+/* Cabeçalho */
+header {
+  background-color: #004b8d;
+  padding: 15px 30px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header img {
+  width: 150px;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+nav ul li a {
+  color: white;
+  font-weight: 600;
+  padding: 8px 12px;
+  transition: background-color 0.3s;
+}
+nav ul li a:hover {
+  background-color: #e32027;
+  border-radius: 4px;
 }
 
-.menu {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px
+/* Banner Principal */
+section.banner {
+  background: url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1200&q=80') no-repeat center/cover;
+  height: 350px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+  padding: 0 20px;
+}
+section.banner h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+section.banner p {
+  font-size: 1.5rem;
+  margin-bottom: 25px;
+}
+section.banner a {
+  background-color: #e32027;
+  color: white;
+  padding: 15px 35px;
+  font-weight: 600;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(227,32,39,0.6);
+  transition: background-color 0.3s;
+}
+section.banner a:hover {
+  background-color: #b91e21;
 }
 
-.menu button {
-    padding: 10px 20px;
-    margin: 0 10px;
-    cursor: pointer;
-    border: 1;
-    border-radius: 10px;
-    background-color: #87c7f1;
-    font-size: 15px;
-    transition: background-color 0.3s;
-    font-family: 'Poppins', Verdana, Geneva, Tahoma, sans-serif
+/* Sabores */
+section#Sabores {
+  max-width: 1100px;
+  margin: 50px auto;
+  padding: 0 20px;
+}
+section#Sabores h2 {
+  text-align: center;
+  color: #004b8d;
+  margin-bottom: 40px;
+  font-weight: 600;
+  font-size: 2rem;
+}
+section#Sabores > div {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+section#Sabores > div > div {
+  max-width: 250px;
+  text-align: center;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  padding: 15px;
+  transition: transform 0.3s;
+  background-color: #fff;
+}
+section#Sabores > div > div:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 15px rgba(0,0,0,0.15);
+}
+section#Sabores img {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+section#Sabores h3 {
+  color: #e32027;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+section#Sabores p {
+  color: #555;
+  font-size: 0.95rem;
 }
 
-.menu button:hover {
-    background-color: #f1edee;
+/* Promoções */
+section#promocao {
+  background-color: #cce6ff;
+  color: #004b8d;
+  padding: 40px 20px;
+  text-align: center;
+}
+section#promocao h2 {
+  font-weight: 600;
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+section#promocao div p {
+  font-size: 1.2rem;
+  margin: 15px 0;
 }
 
+/* Footer */
+footer {
+  background-color: #004b8d;
+  color: white;
+  padding: 25px 20px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+footer p {
+  margin: 7px 0;
+}
+
+/* Responsividade simples */
+@media (max-width: 768px) {
+  nav ul {
+    gap: 15px;
+  }
+  section#Sabores > div {
+    flex-direction: column;
+    align-items: center;
+  }
+  section#Sabores > div > div {
+    width: 90%;
+  }
+  section.banner h1 {
+    font-size: 2rem;
+  }
+  section.banner p {
+    font-size: 1.1rem;
+  }
+}
+
+section {
+  text-align: center;           
+  margin: 50px 20px;           
+}
+section h1 {
+  font-size: 3rem; /* Aumenta o tamanho da fonte */
+  margin-bottom: 15px; /* Espaço abaixo do título */
+  font-weight: 700; /* Deixa o texto mais negrito */
+}
+
+
+section a {
+  display: inline-block;        
+  background-color: #e32027;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 5px;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+section a:hover {
+  background-color: #b91e21;
+}
+header > div {
+  display: flex;
+  align-items: center;    
+  justify-content: space-between; 
+  max-width: 1100px;      
+  margin: 0 auto;        
+  padding: 15px 20px;
+}
+
+nav ul {
+  display: flex;
+  gap: 30px;              
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li a {
+  text-decoration: none;
+  font-weight: 600;
+  padding: 8px 12px;
+}
+
+nav ul li a:hover {
+  background-color: #e32027;
+  border-radius: 4px;
+}

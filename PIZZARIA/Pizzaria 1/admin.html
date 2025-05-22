@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pizzaria Deguê - Admin</title>
+    <link rel="stylesheet" href="admin.css" />
+    <!-- Ícones do Font Awesome para os botões (se quiser usar, importe) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-papbGxvF+hZ4DW9Kx5ZfWm+Yx0v/NgFd4Xe0w+ZgPAhpWjPEfNKhl4dCHVL7n7vZ0ceULtIv3ef+HuzIsCj2nA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+</head>
+<body>
+    <div class="container">
+        <h1>PIZZARIA DEGUÊ</h1>
+        <div class="menu">
+            <button onclick="mostrarSecao('cadastro')">
+                <i class="fas fa-book-medical icon"></i> Cadastrar Pizza
+            </button>
+            <button onclick="mostrarSecao('consulta')">
+                <i class="fas fa-search icon"></i> Consultar Pizza
+            </button>
+            <button onclick="mostrarSecao('alterar')">
+                <i class="fas fa-edit icon"></i> Alterar Pizza
+            </button>
+            <button onclick="mostrarSecao('venda')">
+                <i class="fas fa-shopping-cart icon"></i> Vendas de Pizzas
+            </button>
+            <button onclick="gerarRelatorioVendas()">
+                <i class="fa-solid fa-flag icon"></i> Relatório de Vendas
+            </button>
+        </div>
+
+        <!-- Aqui você pode colocar as seções para cadastro, consulta, alterar e vendas -->
+
+        <!-- Exemplo seção cadastro -->
+        <section id="cadastro" class="hidden">
+            <h2>Cadastrar Pizza</h2>
+            <form onsubmit="event.preventDefault(); adicionarPizza();">
+                <label for="nome-pizza">Nome da Pizza:</label>
+                <input type="text" id="nome-pizza" required />
+
+                <label for="ingredientes-pizza">Ingredientes:</label>
+                <input type="text" id="ingredientes-pizza" required />
+
+                <label for="preco-pizza">Preço (R$):</label>
+                <input type="number" step="0.01" id="preco-pizza" required />
+
+                <button type="submit">Adicionar Pizza</button>
+            </form>
+        </section>
+
+        <!-- Exemplo seção consulta -->
+        <section id="consulta" class="hidden">
+            <h2>Consultar Pizzas</h2>
+            <input
+              type="text"
+              id="busca-pizza"
+              placeholder="Buscar pelo nome da pizza"
+              oninput="buscarPizza()"
+            />
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Ingredientes</th>
+                        <th>Preço (R$)</th>
+                    </tr>
+                </thead>
+                <tbody id="lista-pizzas">
+                    <!-- Lista de pizzas aparecerá aqui -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Exemplo seção alterar -->
+        <section id="alterar" class="hidden">
+            <h2>Alterar Pizza</h2>
+            <input
+              type="text"
+              id="buscar-alterar-pizza"
+              placeholder="Buscar pizza para alterar"
+              oninput="buscarPizzaAlterar()"
+            />
+            <form
+              id="form-alterar-pizza"
+              class="hidden"
+              onsubmit="event.preventDefault(); alterarPizza();"
+            >
+                <label for="novo-nome-pizza">Nome:</label>
+                <input type="text" id="novo-nome-pizza" required />
+
+                <label for="novo-ingredientes-pizza">Ingredientes:</label>
+                <input type="text" id="novo-ingredientes-pizza" required />
+
+                <label for="novo-preco-pizza">Preço (R$):</label>
+                <input type="number" step="0.01" id="novo-preco-pizza" required />
+
+                <button type="submit">Alterar Pizza</button>
+            </form>
+        </section>
+
+        <!-- Exemplo seção vendas -->
+        <section id="venda" class="hidden">
+            <h2>Registrar Venda</h2>
+            <form onsubmit="event.preventDefault(); registrarVenda();">
+                <label for="venda-nome">Nome da Pizza:</label>
+                <input type="text" id="venda-nome" required />
+
+                <label for="venda-preco">Preço (R$):</label>
+                <input type="number" step="0.01" id="venda-preco" required />
+
+                <label for="venda-comprador">Comprador:</label>
+                <input type="text" id="venda-comprador" required />
+
+                <button type="submit">Registrar Venda</button>
+            </form>
+
+            <h3>Vendas Registradas</h3>
+            <ul id="lista-vendas"></ul>
+        </section>
+
+        <!-- Relatório de vendas -->
+        <section id="relatorio-vendas" class="hidden">
+            <h2>Relatório de Vendas</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Preço (R$)</th>
+                        <th>Comprador</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela-relatorio-vendas"></tbody>
+            </table>
+        </section>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

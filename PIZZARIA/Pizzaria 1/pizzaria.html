@@ -1,31 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pizzaria Davi Brito</title>
     <link rel="stylesheet" href="pizzaria.css">
-</head> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <title>Pizzaria Deguê</title>
+</head>
 <body>
-    <div class="container">
-        <h1> PIZZARIA BRITO - CALMANDO A CALABRESA</h1>
-        <div class="menu">
-            <button onclick="mostrarSecao('cadastro')">
-                <i class="fas fa-book-medical icon"></i>Cadastrar Pizza
-            </button>
-            <button onclick="mostrarSecao('consulta')">
-                <i class="fas fa-search icon"></i>Consultar pizza
-            </button>
-            <button onclick="mostrarSecao('alterar')">
-                <i class="fas fa-edit icon"></i>Alterar pizza
-            </button>
-            <button onclick="mostrarSecao('venda')">
-                <i class="fas fa-shopping-cart icon"></i>Vendas de pizzas
-            </button>
-            <button onclick="gerarRelatorioVendas()">
-                <i class="fa-solid fa-flag"></i> Relatório de Vendas
-            </button>
+
+    <!-- Cabeçalho -->
+    <header>
+        <div>
+            <img src="https://tv.sbt.com.br/_next/image?url=https%3A%2F%2Fstatic.sbt.com.br%2Fnoticias%2Fimages%2F277593.jpg&w=1920&q=90" alt="Logo da Pizzaria" width="150">
+            <nav>
+                <ul>
+                    <li><a href="#">Início</a></li>
+                    <li><a href="#Sabores">Cardápio</a></li>
+                    <li><a href="#promocao">Promoções</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </nav>
         </div>
-    </div>
+    </header>
+
+    <!-- Banner Principal -->
+    <section>
+        <h1>Bem-vindo à Pizzaria Deguê</h1>
+        <p>As melhores pizzas, direto no nosso forno!</p>
+        <a href="#">Peça Agora</a>
+    </section>
+
+    <!-- Sabores -->
+    <section id="Sabores">
+        <h2>Nossos Sabores</h2>
+        <div>
+            <div>
+                <img src="https://anamariareceitas.com.br/wp-content/uploads/2024/08/pizza-de-calabresa_1723632793345-1024x576.jpg.webp" alt="Pizza Calabresa" width="200" height="130">
+                <h3>Calabresa</h3>
+                <p>Calabresa, cebola, queijo mussarela e orégano.</p>   
+            </div>
+            <div>
+                <img src="https://www.receiteria.com.br/wp-content/uploads/receitas-de-pizza-baiana-3.jpg" alt="Pizza Baia" width="200" height="130">
+                <h3>Baiana</h3>
+                <p>Mussarela, calabresa moída, tomate, pimentão assado e pimenta calabresa</p>
+            </div>
+            <div>
+                <img src="https://p2.trrsf.com/image/fget/cf/774/0/images.terra.com/2023/07/12/istock-1209038608-1jy7py02omyqp.jpg" alt="Pizza Marguerita" width="200" height="130">
+                <h3>Marguerita</h3>
+                <p>Tomate, manjericão, queijo e molho especial.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promoções -->
+    <section id="promocao">
+        <h2>Promoções Especiais</h2>
+        <div>
+            <p>🧀 2 pizzas grandes por R$59,90</p>
+            <p>🍕 Terça em Dobro: leve 2, pague 1!</p>
+        </div>
+    </section>
+
+    <footer>
+        <section id="contato">
+        <p>📍 Calma Calabreso, 123 - Davi Brito - SP</p>
+        <p>📞 (11) 1234-5678</p>
+        <p>📧 contato@pizzariadegue.com.br</p>
+        
+    </footer>
+
 </body>
 </html>

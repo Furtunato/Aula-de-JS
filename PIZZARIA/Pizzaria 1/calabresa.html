@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmar Compra - Pizza</title>
+    <link rel="stylesheet" href="calabresa.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Confirmação de Compra</h1>
+        
+        <!-- Imagem da Pizza -->
+        <div class="pizza-image">
+            <img src="https://anamariareceitas.com.br/wp-content/uploads/2024/08/pizza-de-calabresa_1723632793345-1024x576.jpg.webp" alt="Pizza Calabresa">
+        </div>
+
+        <div class="pizza-details">
+            <h3>Pizza Calabresa</h3>
+            <p><strong>Preço:</strong> R$ 68,00</p>
+        </div>
+
+        <form action="finalizar_compra.html" method="post" id="formulario-pedido">
+            
+            <!-- Adicionais -->
+            <div class="input-group">
+                <label for="adicionais">Escolha os Adicionais:</label>
+                <select id="adicionais" name="adicionais">
+                    <option value="bacon">Bacon</option>
+                    <option value="queijo-extra">Queijo Extra</option>
+                    <option value="azeitona">Azeitona</option>
+                    <option value="calabresa">Calabresa</option>
+                    <option value="sem-adicionais">Nenhum Adicional</option>
+                </select>
+            </div>
+
+            <!-- Tipo de Borda -->
+            <div class="input-group">
+                <label for="borda">Tipo de Borda:</label>
+                <select id="borda" name="borda">
+                    <option value="normal">Normal</option>
+                    <option value="recheada">Recheada</option>
+                </select>
+            </div>
+
+            <!-- Recheio da Borda -->
+            <div class="input-group">
+                <label for="recheio">Escolha o Recheio da Borda:</label>
+                <select id="recheio" name="recheio">
+                    <option value="queijo">Cheddar</option>
+                    <option value="chocolate">Chocolate</option>
+                    <option value="catupiry">Catupiry</option>
+                    <option value="sem-recheio">Sem Recheio</option>
+                </select>
+            </div>
+
+            <!-- Forma de Pagamento -->
+            <div class="input-group">
+                <label for="pagamento">Forma de Pagamento:</label>
+                <select id="pagamento" name="pagamento" onchange="exibirTroco()">
+                    <option value="pix">Pix</option>
+                    <option value="dinheiro">Dinheiro</option>
+                    <option value="cartao">Cartão</option>
+                </select>
+            </div>
+
+            <!-- Campo para Troco (aparece se "Dinheiro" for selecionado) -->
+            <div id="troco-group" class="input-group" style="display: none;">
+                <label for="troco">Deseja troco?</label>
+                <input type="number" id="troco" name="troco" placeholder="Informe o valor pago" min="30" step="0.01">
+            </div>
+
+            <!-- Observações -->
+            <div class="observacao-container">
+                <label for="observacao">Observações:</label>
+                <textarea id="observacao" name="observacao" placeholder="Deixe suas observações aqui..." rows="3"></textarea>
+            </div>
+
+            <!-- Botão de Enviar -->
+            <div class="menu-item">
+                <button type="button" id="confirmar-btn">Confirmar Compra</button>
+            </div>
+        </form>
+
+        <!-- Div de Loading (agora dentro do container) -->
+        <div id="loading" class="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>Aguarde, estamos confirmando sua compra...</p>
+        </div>
+
+    </div> <!-- Fim do container -->
+
+    <script>
+        // Função para mostrar o campo de troco se "Dinheiro" for selecionado
+        function exibirTroco() {
+            var pagamento = document.getElementById("pagamento").value;
+            var trocoGroup = document.getElementById("troco-group");
+            
+            if (pagamento === "dinheiro") {
+                trocoGroup.style.display = "block";
+            } else {
+                trocoGroup.style.display = "none";
+            }
+        }
+
+        // Função para confirmar o pedido
+        document.getElementById("confirmar-btn").addEventListener("click", function() {
+            // Esconder o formulário e mostrar o loading
+            document.getElementById("formulario-pedido").style.display = "none";
+            document.getElementById("loading").style.display = "block";
+
+            // Redirecionar após 3 segundos
+            setTimeout(function() {
+                window.location.href = "finalizar_compra.html";  // Substitua "finalizar_compra.html" pela URL desejada
+            }, 3000);  // Delay de 3 segundos
+        });
+    </script>
+
+</body>
+</html>

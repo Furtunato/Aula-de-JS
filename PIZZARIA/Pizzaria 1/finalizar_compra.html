@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compra Finalizada</title>
+    <link rel="stylesheet" href="finalizar_compra.css">
+    <link icon="https://www.google.com/favicon.ico" rel="shortcut icon" type="image/x-icon">
+</head>
+<body>
+
+    <!-- Container principal -->
+    <div class="container">
+        <h1>Compra Finalizada!</h1>
+        
+        <!-- Detalhes do Pedido -->
+        <div class="pedido-detalhes">
+            <div class="pizza-image">
+                <img src="https://anamariareceitas.com.br/wp-content/uploads/2024/08/pizza-de-calabresa_1723632793345-1024x576.jpg.webp" alt="Pizza Margherita">
+            </div>
+            <h3>Pizza Margherita</h3>
+            <p><strong>Preço:</strong> R$ 30,00</p>
+            <p><strong>Adicionais:</strong> Bacon, Queijo Extra</p>
+            <p><strong>Borda:</strong> Recheada com Queijo</p>
+            <p><strong>Recheio da Borda:</strong> Queijo</p>
+        </div>
+
+        <!-- Status do Pedido -->
+        <div class="status-pedido">
+            <h3>Status do Pedido</h3>
+            <p><strong>Status:</strong> Pedido Confirmado</p>
+            <p><strong>Previsão de Entrega:</strong> 30 minutos</p>
+            <p><strong>Entrega:</strong> Preparando...</p>
+        </div>
+
+        <!-- Informações de Pagamento -->
+        <div class="info-pagamento">
+            <h3>Informações de Pagamento</h3>
+            <p><strong>Forma de Pagamento:</strong> Cartão</p>
+            <p><strong>Valor Pago:</strong> R$ 68,00</p>
+            <p><strong>Troco:</strong> Não</p>
+        </div>
+
+        <!-- Botão para Voltar à Página Inicial -->
+        <button onclick="voltarPagina()">Voltar à Página Inicial</button>
+    </div>
+
+    <script>
+        // Função para redirecionar para a página inicial
+        function voltarPagina() {
+            window.location.href = "pizzaria.html";  // Substitua "index.html" pela URL da página inicial
+        }
+    </script>
+
+</body>
+</html>

@@ -1,23 +1,23 @@
-/* Resetando margens e paddings padrão */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Corpo da página */
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f9;
     color: #333;
     display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; /* Centraliza verticalmente */
-    height: 100vh; /* Faz o body ter altura total da janela */
-    margin: 0; /* Remove a margem padrão */
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+    margin: 0; 
 }
 
-/* Contêiner principal */
+
 .container {
     background-color: #fff;
     border-radius: 8px;
@@ -26,19 +26,19 @@ body {
     width: 100%;
     max-width: 700px;
     margin: 20px;
-    flex: 1; /* Permite que o contêiner cresça */
-    overflow-y: auto; /* Permite a rolagem do conteúdo */
-    box-sizing: border-box; /* Garante que o padding não afete o tamanho do container */
+    flex: 1; 
+    overflow-y: auto; 
+    box-sizing: border-box; 
 }
 
-/* Cabeçalho */
+
 h1 {
     text-align: center;
     color: #2d2d2d;
     margin-bottom: 20px;
 }
 
-/* Imagem da Pizza */
+
 .pizza-image {
     display: flex;
     justify-content: center;
@@ -51,7 +51,7 @@ h1 {
     border-radius: 10px;
 }
 
-/* Detalhes da Pizza */
+
 .pizza-details {
     text-align: center;
     margin-bottom: 20px;
@@ -66,7 +66,7 @@ h1 {
     color: #555;
 }
 
-/* Estilo dos grupos de input */
+
 .input-group {
     margin-bottom: 20px;
 }
@@ -88,7 +88,7 @@ h1 {
     font-size: 16px;
 }
 
-/* Botão */
+
 button {
     width: 100%;
     padding: 12px;
@@ -116,10 +116,32 @@ button:hover {
     resize: none;
 }
 
-/* Estilo da Div de Loading */
+
 .loading {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+
+button[onclick="window.location.href='pizzaria.html'"] {
+    background-color: transparent;
+    color: #e32027;
+    border: 2px solid #e32027;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+button[onclick="window.location.href='pizzaria.html'"]:hover {
+    background-color: #f8f8f8;
+}
+
+
+button[onclick="window.location.href='pizzaria.html'"]::before {
+    content: "←";
+    font-size: 18px;
 }

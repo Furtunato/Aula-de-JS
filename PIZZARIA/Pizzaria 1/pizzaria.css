@@ -1,4 +1,5 @@
-/* Reset básico */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -16,7 +17,7 @@ a {
   color: inherit;
 }
 
-/* Cabeçalho */
+
 header {
   background-color: #004b8d;
   padding: 15px 30px;

@@ -1,23 +1,24 @@
-/* Resetando margens e paddings padrão */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Corpo da página */
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f9;
     color: #333;
     display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; /* Centraliza verticalmente */
-    height: 100vh; /* Ocupa a altura inteira da tela */
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
     margin: 0;
 }
 
-/* Container principal */
+
 .container {
     background-color: #fff;
     border-radius: 8px;
@@ -29,14 +30,14 @@ body {
     text-align: center;
 }
 
-/* Título da página */
+
 h1 {
     color: #2d2d2d;
     margin-bottom: 30px;
     font-size: 28px;
 }
 
-/* Detalhes do Pedido */
+
 .pedido-detalhes {
     margin-bottom: 30px;
 }
@@ -62,7 +63,7 @@ h1 {
     color: #555;
 }
 
-/* Status do Pedido */
+
 .status-pedido {
     margin-bottom: 30px;
 }
@@ -77,7 +78,7 @@ h1 {
     color: #555;
 }
 
-/* Informações de Pagamento */
+
 .info-pagamento {
     margin-bottom: 30px;
 }
@@ -92,7 +93,7 @@ h1 {
     color: #555;
 }
 
-/* Botão para voltar */
+
 button {
     padding: 12px 20px;
     background-color: #e32027;
@@ -108,7 +109,7 @@ button:hover {
     background-color: #b91e21;
 }
 
-/* Responsividade */
+
 @media (max-width: 768px) {
     .container {
         padding: 20px;

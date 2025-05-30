@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Pizzaria Delgado's</title>
+    <title>Pizzaria Deguê</title>
     <link rel="stylesheet" href="admin.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
 </head>
 <body>
-    
     <header>
-        <img  onclick="window.location.href='login.html'"src="https://tv.sbt.com.br/_next/image?url=https%3A%2F%2Fstatic.sbt.com.br%2Fnoticias%2Fimages%2F277593.jpg&w=1920&q=90" alt="logo pizzaria" id="logo-topo" />
+        <img onclick="window.location.href='login.html'" src="https://tv.sbt.com.br/_next/image?url=https%3A%2F%2Fstatic.sbt.com.br%2Fnoticias%2Fimages%2F277593.jpg&w=1920&q=90" alt="logo pizzaria" id="logo-topo" />
         <h1>Pizzaria Deguê!</h1>
         <nav>
             <center>
@@ -23,7 +23,6 @@
     </header>
 
     <main>
-        <!-- Cadastrar Pizza -->
         <section id="cadastro" class="hidden">
             <h2>Cadastrar Pizza</h2>
             <form id="form-cadastro" onsubmit="event.preventDefault(); cadastrarPizza();">
@@ -41,19 +40,24 @@
             <p id="mensagem-cadastro" class="mensagem-hidden"></p>
         </section>
 
-        <!-- Verificar Pizzas -->
         <section id="verificar" class="hidden">
-            <h2>Verificar Pizzas</h2>
-            <div id="lista-pizzas">
-                <p>Ainda não há pizzas cadastradas.</p>
-            </div>
-            <p id="mensagem-verificar" class="mensagem-hidden"></p>
-        </section>
+    <h2>Verificar Pizzas</h2>
+    <table border="1" cellspacing="0" cellpadding="5">
+        <thead>
+            <tr>
+                <th>Pizza</th>
+                <th>Ingredientes</th>
+                <th>Preço</th>
+            </tr>
+        </thead>
+        <tbody id="lista-pizza"></tbody>
+    </table>
+</section>
 
-        <!-- Alterar Pizza -->
+
         <section id="alterar" class="hidden">
             <h2>Alterar Pizza</h2>
-            <label for="buscar-nome">Buscar Pizza (por nome exato):</label><br/>
+            <label for="buscar-nome">Buscar Pizza:</label><br/>
             <input type="text" id="buscar-nome" placeholder="Nome da pizza para alterar" />
             <button onclick="buscarPizzaAlterar()">Buscar</button>
             <p id="mensagem-alterar" class="mensagem-hidden"></p>
@@ -73,7 +77,7 @@
             </form>
         </section>
 
-        <!-- Registrar Venda -->
+
         <section id="vendas" class="hidden">
             <h2>Registrar Venda</h2>
             <form onsubmit="event.preventDefault(); registrarVenda();">
@@ -91,7 +95,6 @@
             <p id="mensagem-vendas" class="mensagem-hidden"></p>
         </section>
 
-        <!-- Relatório de Vendas -->
         <section id="relatorio" class="hidden">
             <h2>Relatório de Vendas</h2>
             <table border="1" cellspacing="0" cellpadding="5">
